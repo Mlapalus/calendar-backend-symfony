@@ -1,0 +1,16 @@
+<?xmll version"1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping 
+        https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\Calendar" repository-class="App\Repository\CalendarRepository" table="calendar">
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY" />
+        </id>
+        <field name="createdAt" type="integer" column="created_at" nullable="false"/>
+        <field name="title" type="string" column="title" nullable="false"/>
+        <many-to-one field="group" target-entity="Group">
+            <join-column name="groupe_id" referenced-column-name="id">
+            </many-to-one>
+            <field name="events" type="json" column="events" nullable="false"/>
+        </entity>
+    </doctrine-mapping>
